@@ -21,22 +21,11 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
     <div class="container">
-      <header>
-        <div>
-          <a class="" href="./index.html"><i class="fas fa-home"> LITTLE FOOT</i></a>
-        </div>
-        <div>
-          <ul class="admin-menu">
-            <li><a class="admin-menu-item" href="./posts.html"><i class="fas fa-thumbtack"> All Posts</i></a></li>
-            <li><a class="admin-menu-item" href="./new-post.html"><i class="fas fa-pen"> New Post</i></a></li>
-            <li><a class="admin-menu-item" href=""><i class="fas fa-sign-out-alt"> Log Out</i></a></li>
-          </ul>
-        </div>
-      </header>
+      <?php include 'header.php';?>
       <main class="posts">
         <div class="post-header">
           <h1>POST</h1>
-          <a class="new-post" href="./new-post.html"><i class="fas fa-pen"> Add New Post</i></a>
+          <a class="new-post" href="./new-post.php"><i class="fas fa-pen"> Add New Post</i></a>
         </div>
         <table class="post-table">
           <thead>
@@ -46,14 +35,35 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td class="">How to Go Green: Carbon Offsets</td>
-              <td>
-                <a class="btn-del" href="#"><i class="far fa-trash-alt"> Delete</i></a>
-              </td>
-            </tr>
+          <form class="posts" method="POST" action="PHP/delete-post.php">
+            <?php
+              require_once('./PHP/database.php');
+              $sql = "SELECT * FROM post WHERE post_deleted = 0";
+              $result = mysqli_query($conn, $sql);
+              while($row = mysqli_fetch_assoc($result)){
+              echo "<tr><td>{$row['post_title']}</td>
+              <td><button class='btn-del' name='delete-post' value={$row['id']}><i class='far fa-trash-alt'> Delete</i></button></td>
+              </tr>\n";
+            }
+              mysqli_free_result($result);
+            
+            ?>
+          </form>
           </tbody>
         </table>
+        <div>
+          <?php
+          require_once('./PHP/database.php');
+          $sql_sum = "SELECT * FROM donation";
+          $sum = mysqli_query($conn, $sql_sum);
+          $total = 0;
+          while($row = mysqli_fetch_assoc($sum)){
+            $total += $row['donation_amount'];
+          }
+          echo "<h1>Total Donations <span class='total'>$$total.00</span></h1>";
+          mysqli_close($conn);
+          ?>
+        </div>
       </main>
     </div>
 
