@@ -21,27 +21,16 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
     <div class="container">
-      <header>
-        <div>
-          <a class="" href="./index.html"><i class="fas fa-home"> LITTLE FOOT</i></a>
-        </div>
-        <div>
-          <ul class="admin-menu">
-            <li><a class="admin-menu-item" href="./posts.html"><i class="fas fa-thumbtack"> All Posts</i></a></li>
-            <li><a class="admin-menu-item" href="./new-post.html"><i class="fas fa-pen"> New Post</i></a></li>
-            <li><a class="admin-menu-item" href=""><i class="fas fa-sign-out-alt"> Log Out</i></a></li>
-          </ul>
-        </div>
-      </header>
+      <?php include 'header.php';?>
       <main class="add-new-post">
         <h1>New Post</h1>
         <div class="form-cont">
-          <form action="" class="post-form">
-            <label for="country">Post Title</label>
-            <input type="text" name="post-title" class="post-title" placeholder="Post Title">
-            <label for="country">Post Description</label>
-            <textarea rows="10" cols="50" name="post-desc" class="post-desc" placeholder="Post description..."></textarea>
-            <input type="submit" value="Publish" class="btn-publish">
+          <form class="post-form" method="POST" action="PHP/add-donation.php">
+            <label for="post-title">Post Title</label>
+            <input type="text" name="post-title" class="post-title" placeholder="Post Title" required/>
+            <label for="post-desc">Post Description</label>
+            <textarea rows="10" cols="50" name="post-desc" class="post-desc" placeholder="Post description..." required></textarea>
+            <input type="submit" name="submit" value="Donate" class="btn-publish">
           </form>
         </div>
       </main>
