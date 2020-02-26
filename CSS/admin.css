@@ -64,10 +64,17 @@ header{
 .post-table td{
   border: 1px solid #F0F7F4;
   padding: 1em;
+  border-bottom: 1px solid #5C967A;
 }
 
 .post-table tbody{
   background-color: #f2f2f2;
+}
+
+.btn-del{
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }
 
 .btn-del i{
@@ -118,4 +125,34 @@ input[type=submit] {
 
 .btn-publish:hover{
   background-color: #5C967A;
+}
+
+.alert-box{
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.alert{
+  padding: .75rem 1.25rem;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+  font-size: 24pt;
+}
+
+.delete{
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+}
+
+.insert{
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+}
+
+.total{
+  color: #155724;
 }
