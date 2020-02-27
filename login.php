@@ -14,11 +14,11 @@
         <div class="name">Little Foot</div>
         
         <div class="login">
-            <form>
-                <input type="text" placeholder="username">
-                <input type="text" placeholder="password">
+            <form method="POST" action="PHP/admin-login.php">
+                <input type="text" placeholder="username" name="username">
+                <input type="text" placeholder="password" name="password">
                 
-                    <button href="index.html" class="submit">Submit</button>
+                    <input type="submit" name="submit" class="submit">
             </form>
         </div>
         
