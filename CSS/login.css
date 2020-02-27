@@ -17,7 +17,6 @@ body {
 #logo {
     height: 20vh;
 }
-
 .name {
     font-family: 'Raleway';
     font-size: 30pt;
@@ -77,4 +76,3 @@ input {
     transition: 0.3s;
     font-size: 12pt;
 }
-
