@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -13,10 +14,15 @@
                     <h3>Little Foot</h3>
                 </div>
                 <div>
-                    <a href=''>Create New Post</a>
-                    <a href='login.html'>
-                        <button class="home-header-btn">Sign In</button>
-                    </a>
+                    <?php
+                    if(!isset($_SESSION['user'])){
+                        echo "<a href='login.php'><button class='home-header-btn'>Sign In</button></a>";
+                    }else{
+                        echo "<a href='new-post.php'>Create New Post</a>";                        
+                        echo "<a href='PHP/logout.php'>Log Out</a>";
+                    }
+                    ?>
+                    <a href="donate.php">DONATE</a>
                 </div>
             </div>
             <div class="home-hero">
@@ -51,12 +57,7 @@
             </div>
             <div class="home-articles">
                 <h3>Articles</h3>
-                <div class="home-post">
-                    <h4>Title</h4>
-                    <div class="post-descr">
-                        <p>Description</p>
-                    </div>
-                </div>
+                
             </div>
             <div class="footer">
                 <p> &copy; Copyright Little Foot</p>
