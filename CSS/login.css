@@ -3,13 +3,25 @@
 body {
     height: 100%;
     width: 100%;
-    background-color: #F0F7F4;
+    background-color: white;
+}
+
+#imageCont {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20vh;
+}
+
+#logo {
+    height: 20vh;
 }
 .name {
     font-family: 'Raleway';
     font-size: 30pt;
     text-align: center;
-    padding-top: 20vh;
+    padding-top: 5vh;
 }
 
 .login {
@@ -31,7 +43,7 @@ form {
 }
 
 input {
-    background-color: #F0F7F4;
+    background-color: white;
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -42,11 +54,25 @@ input {
 }
 
 .submit {
-    background-color: #A2E3C4;
+    background-color: #66B9CC;
     height: 45px;
     width: 100px;
-    border: 1px solid #A2E3C4;
+    border: 1px solid #66B9CC;
     border-radius: 4px;
     box-sizing: border-box;
     margin-top: 12px;
+    font-size: 12pt;
+}
+
+.submit:hover {
+    background-color: white;
+    height: 45px;
+    width: 100px;
+    border: 1px solid #66B9CC;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 12px;
+    transform: scale(1.1);
+    transition: 0.3s;
+    font-size: 12pt;
 }
