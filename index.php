@@ -1,3 +1,8 @@
+<?php
+include './PHP/database.php';
+
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -13,7 +18,7 @@
                     <h3>Little Foot</h3>
                 </div>
                 <div>
-                    <a href=''>Create New Post</a>
+                    <a href='new-post.php'>Create New Post</a>
                     <a href='login.html'>
                         <button class="home-header-btn">Sign In</button>
                     </a>
@@ -51,12 +56,16 @@
             </div>
             <div class="home-articles">
                 <h3>Articles</h3>
-                <div class="home-post">
-                    <h4>Title</h4>
-                    <div class="post-descr">
-                        <p>Description</p>
-                    </div>
-                </div>
+                <?php
+
+                $sql = "SELECT * FROM post";
+                $return = mysqli_query($conn, $sql);
+
+                while ($row = mysqli_fetch_assoc($return)) {
+                    echo "<div class='home-post'><h4>{$row['post_title']}</h4><div class='post-descr'><p>{$row['post_desc']}</p></div></div>";
+                }
+                ?>
+                
             </div>
             <div class="footer">
                 <p> &copy; Copyright Little Foot</p>
