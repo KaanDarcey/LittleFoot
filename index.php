@@ -9,6 +9,7 @@ include './PHP/database.php';
         <title>Little Foot</title>
         <meta charset="utf-8" />
         <link href='./CSS/style.css' rel='stylesheet'/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
     </head>
     <body>
         <div class="home-container">
@@ -20,8 +21,12 @@ include './PHP/database.php';
                 <div>
                     <?php
                     if(!isset($_SESSION['user'])){
-                        echo "<a href='admin/login.php'><button class='home-header-btn'>Sign In</button></a>";
-                        echo "<span class='donate'><a href='donate.php'>DONATE</a></span>";
+                      echo "<a href='index.php'>Home</a>";
+                      echo "<a href='contact-us.php'>Contact Us</a>";
+
+                      echo "<a href='admin/login.php' class='admin-login'>Sign In</a>";
+                      // echo "<a href='admin/login.php' class='admin-login'><button class='home-header-btn'>Sign In</button></a>";
+                      echo "<span class='donate'><a href='donate.php'>DONATE</a></span>";
                     }else{
                         echo "<a href='admin/new-post.php'>Create New Post</a>";                        
                         echo "<a href='PHP/logout.php'>Log Out</a>";
@@ -71,8 +76,14 @@ include './PHP/database.php';
                 }
                 ?> 
             </div>
-            <div class="home-icons">
-            <?php
+            <div class="stat-container">
+              <div class="stat">
+                <i class="fas fa-hands-helping"></i>
+                <h1>108</h1>
+                <span>Volunteers</span>
+              </div>
+              <div class="stat">
+              <?php
                 require_once('./PHP/database.php');
                 $sql_sum = "SELECT * FROM donation";
                 $sum = mysqli_query($conn, $sql_sum);
@@ -80,9 +91,18 @@ include './PHP/database.php';
                 while($row = mysqli_fetch_assoc($sum)){
                     $total += $row['donation_amount'];
                 }
-                echo "<h1 class='donations'>Total Donations <span class='total'>$ $total.00</span></h1>";
+                echo "<i class='fas fa-hand-holding-usd usd'></i>";
+                echo "<h1>$ $total</h1>";
+                echo "<span>Donations</span>";
                 mysqli_close($conn);
             ?>
+              </div>
+              <div class="stat">  
+                <i class="fas fa-clock"></i>
+                <h1>3000</h1>
+                <span>Hours of Help</span>
+              </div>
+
             </div>
 
             <div class="footer">
