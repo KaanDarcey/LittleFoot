@@ -12,8 +12,8 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
 
-    <link rel="stylesheet" href="./CSS/style.css">
-    <link rel="stylesheet" href="./CSS/admin.css">
+    <link rel="stylesheet" href="../CSS/style.css">
+    <link rel="stylesheet" href="../CSS/admin.css">
     
   </head>
   <body>
@@ -35,9 +35,9 @@
             </tr>
           </thead>
           <tbody>
-          <form class="posts" method="POST" action="PHP/delete-post.php">
+          <form class="posts" method="POST" action="../PHP/delete-post.php">
             <?php
-              require_once('./PHP/database.php');
+              require_once('../PHP/database.php');
               $sql = "SELECT * FROM post WHERE post_deleted = 0";
               $result = mysqli_query($conn, $sql);
               while($row = mysqli_fetch_assoc($result)){
@@ -51,19 +51,6 @@
           </form>
           </tbody>
         </table>
-        <div>
-          <?php
-          require_once('./PHP/database.php');
-          $sql_sum = "SELECT * FROM donation";
-          $sum = mysqli_query($conn, $sql_sum);
-          $total = 0;
-          while($row = mysqli_fetch_assoc($sum)){
-            $total += $row['donation_amount'];
-          }
-          echo "<h1>Total Donations <span class='total'>$$total.00</span></h1>";
-          mysqli_close($conn);
-          ?>
-        </div>
       </main>
     </div>
 

@@ -1,4 +1,8 @@
 <?php session_start(); ?>
+
+<?php
+include './PHP/database.php';
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -16,13 +20,13 @@
                 <div>
                     <?php
                     if(!isset($_SESSION['user'])){
-                        echo "<a href='login.php'><button class='home-header-btn'>Sign In</button></a>";
+                        echo "<a href='admin/login.php'><button class='home-header-btn'>Sign In</button></a>";
+                        echo "<span class='donate'><a href='donate.php'>DONATE</a></span>";
                     }else{
-                        echo "<a href='new-post.php'>Create New Post</a>";                        
+                        echo "<a href='admin/new-post.php'>Create New Post</a>";                        
                         echo "<a href='PHP/logout.php'>Log Out</a>";
                     }
                     ?>
-                    <a href="donate.php">DONATE</a>
                 </div>
             </div>
             <div class="home-hero">
@@ -57,8 +61,30 @@
             </div>
             <div class="home-articles">
                 <h3>Articles</h3>
-                
+                <?php
+
+                $sql = "SELECT * FROM post WHERE post_deleted = 0";
+                $return = mysqli_query($conn, $sql);
+
+                while ($row = mysqli_fetch_assoc($return)) {
+                    echo "<div class='home-post'><h4>{$row['post_title']}</h4><div class='post-descr'><p>{$row['post_desc']}</p></div></div>";
+                }
+                ?> 
             </div>
+            <div class="home-icons">
+            <?php
+                require_once('./PHP/database.php');
+                $sql_sum = "SELECT * FROM donation";
+                $sum = mysqli_query($conn, $sql_sum);
+                $total = 0;
+                while($row = mysqli_fetch_assoc($sum)){
+                    $total += $row['donation_amount'];
+                }
+                echo "<h1 class='donations'>Total Donations <span class='total'>$ $total.00</span></h1>";
+                mysqli_close($conn);
+            ?>
+            </div>
+
             <div class="footer">
                 <p> &copy; Copyright Little Foot</p>
             </div>

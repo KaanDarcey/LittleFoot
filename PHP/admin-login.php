@@ -19,7 +19,7 @@
               if($row == 1){
                 echo "Login successful";
                 $_SESSION['user'] = $username;
-                header("Refresh:1; url=../index.php");
+                header("Refresh:.5; url=../index.php");
               }else{
                   echo "User not found";
               }

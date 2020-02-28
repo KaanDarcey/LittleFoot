@@ -236,3 +236,23 @@ body {
     align-items: center;
     background-color: #F1F1F1;
 }
+
+a{
+    text-decoration: none;
+}
+
+.donate a:link, .donate a:visited{
+    background-color: #8fc548;
+    padding: .75em;
+    border-radius: 3px;
+    color: white;
+}
+
+.donate a:active, .donate a:hover{
+    background-color: #98D14D;
+    color: white;
+}
+
+.donations, .total{
+    letter-spacing: 1px;
+}

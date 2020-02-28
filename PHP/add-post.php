@@ -36,7 +36,7 @@
             echo "</div>";
             // echo "post-title: ".$postTitle ."<br><br>";
             // echo "post-desc: ".$postDesc ."<br><br>";
-            header("Refresh:1; url=../posts.php");
+            header("Refresh:1; url=../admin/posts.php");
               }
           }
       ?>
