@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 26, 2020 at 07:34 AM
+-- Generation Time: Feb 28, 2020 at 08:04 AM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.11
 
@@ -44,6 +44,19 @@ INSERT INTO `admin` (`id`, `username`, `password`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `contact`
+--
+
+CREATE TABLE `contact` (
+  `id` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `msg` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `donation`
 --
 
@@ -61,8 +74,8 @@ CREATE TABLE `donation` (
 --
 
 INSERT INTO `donation` (`id`, `name`, `card_number`, `cvv`, `expiry_date`, `donation_amount`) VALUES
-(1, 'Karen', '2147483647', 123, 1234, '123'),
-(2, 'Karen', '$2y$10$qOioE8.ExfQmVPsxEz5esO8bIheD/ZaAIBTRH0z3uGDtG48KM0LGu', 321, 4312, '123');
+(2, 'Karen', '$2y$10$qOioE8.ExfQmVPsxEz5esO8bIheD/ZaAIBTRH0z3uGDtG48KM0LGu', 321, 4312, '123'),
+(3, 'Juno', '$2y$10$.v2xkfuX6ZdG10US.8aVCOG6UFPbG/m8LrHfeLPwurfZvcK5gHTou', 143, 1235, '0');
 
 -- --------------------------------------------------------
 
@@ -82,11 +95,6 @@ CREATE TABLE `post` (
 --
 
 INSERT INTO `post` (`id`, `post_title`, `post_desc`, `post_deleted`) VALUES
-(1, 'test', 'test!', 1),
-(2, 'test', 'test1!', 1),
-(3, 'test', 'test3!', 1),
-(4, 'test4', 'test3!', 1),
-(5, 'test5', 'test3!', 1),
 (6, 'Science Cannot Stop Global Warming', 'With current efforts or those committed to under the Paris agreement, there is absolutely no chance that humanity will limit the warming of the Earth’s surface to an average of 1.5 degrees Celsius. This finding emerges from a special report of the Intergovernmental Panel on Climate Change (IPCC) on 1.5 degrees released on Monday 8 October 2018. It will take extraordinary effort to achieve this target, a real change of track. At the same time, climate change will bring a dramatic rise in extreme events, a sea level rise that will be much larger if we continue heating our planet unabated rather than halt the temperature increase. The sea level rise will continue over centuries as Greenland and Antarctic glaciers slowly disintegrate and the ocean slowly absorbs more heat and expands. The consequences for coastal cities home to hundreds of millions will be dramatic as storm surges rise. The IPCC speaks with a clear voice of the threats to lives, physical infrastructure, ecosystems, and associate economic cost but does not quantify the consequences of political collapse, civil strife and war that may quite well arise from a hothouse Earth.', 0),
 (7, 'Will more expensive metals impede economic growth in the US?', 'As the US government justifies new tariffs on steel and aluminum imports with their military importance, the role of metals in society comes into focus. New research shows that metals are an important ingredient in economic upswings. Conversely, metal use declines rapidly in recessions. Restricting the access to metals or increasing their price may come at a cost to the economy.\r\n\r\nMetals are key enablers of economic development and human progress, being widely used for their superior structural properties, durability, and increasingly for their special chemical properties that are the basis for technological wizardry from drones to brain imaging. Access to metals is important for a modern economy. Taxing an important input to production may cause disruption in global supply chains. New research published in Nature Geoscience by a team of scientists from Yale, Tsinghua University, and NTNU tried to unravel the relationship between metal use and economic activity.', 0),
 (8, 'Energy efficiency offers win-win for climate, health, and ecosystems', 'A potential increase in metal consumption emerges as only concern in a broad-based investigation of the clean-energy transition\r\n\r\nThe history of environmental protection is full of unforeseen consequences: taller chimneys only led to pollutants spreading wide and far, and safe refrigerants replacing hydrocarbons turned out to damage the ozone hole. How can we ensure that technologies we employ to reduce greenhouse gas emissions do not give rise to the next generation of problems? Protecting the climate demands a fundamental reorganization of some aspects of our economy. How can we make sure that we select and develop solutions that offer us the largest net benefit?', 0);
@@ -101,6 +109,12 @@ INSERT INTO `post` (`id`, `post_title`, `post_desc`, `post_deleted`) VALUES
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `username` (`username`);
+
+--
+-- Indexes for table `contact`
+--
+ALTER TABLE `contact`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `donation`
@@ -126,16 +140,22 @@ ALTER TABLE `admin`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `contact`
+--
+ALTER TABLE `contact`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `donation`
 --
 ALTER TABLE `donation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `post`
 --
 ALTER TABLE `post`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
