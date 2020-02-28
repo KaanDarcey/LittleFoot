@@ -6,7 +6,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Admin | All Posts</title>
+    <title>All Posts | Little Foot</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -24,7 +24,7 @@
       <?php include 'header.php';?>
       <main class="posts">
         <div class="post-header">
-          <h1>POST</h1>
+          <h1>ALL POSTS</h1>
           <a class="new-post" href="./new-post.php"><i class="fas fa-pen"> Add New Post</i></a>
         </div>
         <table class="post-table">
@@ -53,8 +53,6 @@
         </table>
       </main>
     </div>
-
-    
     <script src="" async defer></script>
   </body>
 </html>
