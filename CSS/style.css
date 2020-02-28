@@ -51,10 +51,16 @@ body {
 .home-header a {
     color:black;
     margin-right: 30px;
+    padding: .5em;
 }
 
 .home-header a:hover {
     color:white;
+    background-color: #8fc548;
+}
+
+.admin-login a:hover{
+  background-color: none !important;
 }
 
 .home-header-logo {
@@ -253,6 +259,49 @@ a{
     color: white;
 }
 
+.stat-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.stat{
+  background-color: #f0f7f4;
+  width: 33%;
+  margin: 1em;
+  padding: 3em 0;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.stat:first-child{
+  margin-left: 10em;
+}
+
+.stat:last-child{
+  margin-right: 10em;
+}
+
+.stat>i{
+  font-size: 4rem;
+  color: #8fc548;
+}
+
+.stat > h1{
+  font-size: 36pt;
+  color: #8fc548;
+}
+
+.stat > span{
+  text-transform: uppercase;
+}
+
 .donations, .total{
     letter-spacing: 1px;
+}
+
+.stat>.usd{
+  font-size: 6rem;
 }
