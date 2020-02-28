@@ -28,6 +28,7 @@ include './PHP/database.php';
                       // echo "<a href='admin/login.php' class='admin-login'><button class='home-header-btn'>Sign In</button></a>";
                       echo "<span class='donate'><a href='donate.php'>DONATE</a></span>";
                     }else{
+                        echo "<a href='admin/posts.php'>All Posts</a>";                        
                         echo "<a href='admin/new-post.php'>Create New Post</a>";                        
                         echo "<a href='PHP/logout.php'>Log Out</a>";
                     }
