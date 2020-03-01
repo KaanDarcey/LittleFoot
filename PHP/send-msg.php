@@ -19,24 +19,23 @@
 
       require_once('database.php');
 
-      $postTitle = $_POST['post-title'];
-      $postDesc = $_POST['post-desc'];
+      $name = $_POST['name'];
+      $email = $_POST['email'];
+      $msg = $_POST['msg'];
 
-      $sql = mysqli_query($conn, "SELECT postTitle FROM users WHERE postTitle = '$postTitle' ");
+      $insert = "INSERT INTO contact (name, email, msg) VALUES
+      ('$name', '$email', '$msg')";
 
-      $insert = "INSERT INTO post (post_title, post_desc, post_deleted) VALUES
-      ('$postTitle', '$postDesc', 0)";
-
-      if(isset($_POST['submit'])){
-          if($postTitle==''||$postDesc==''){
+      if(isset($_POST['send-msg'])){
+          if($name==''||$email=='' || $msg==''){
               echo "Please input values";
           }else if(mysqli_query($conn,$insert)){
             echo "<div class='alert-box'>";
-            echo "<span class='alert insert'>Post published.</span>";
+            echo "<span class='alert insert'>Thanks for contacting us. We will get intouch with you shortly.</span>";
             echo "</div>";
             // echo "post-title: ".$postTitle ."<br><br>";
             // echo "post-desc: ".$postDesc ."<br><br>";
-            header("Refresh:1; url=../admin/posts.php");
+            header("Refresh:2; url=../index.php");
               }
           }
       ?>

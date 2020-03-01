@@ -15,28 +15,34 @@
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-    <?php
+    <?php session_start();
+  if (isset($_SESSION['user'])){
+    header("Location: ../index.php");
+  }
 
       require_once('database.php');
 
-      $postTitle = $_POST['post-title'];
-      $postDesc = $_POST['post-desc'];
+      $username = $_POST['username'];
+      $pass = $_POST['password'];
 
-      $sql = mysqli_query($conn, "SELECT postTitle FROM users WHERE postTitle = '$postTitle' ");
-
-      $insert = "INSERT INTO post (post_title, post_desc, post_deleted) VALUES
-      ('$postTitle', '$postDesc', 0)";
+      $sql = "SELECT id FROM admin WHERE username = '$username' AND password = '$pass' ";
 
       if(isset($_POST['submit'])){
-          if($postTitle==''||$postDesc==''){
+          if($username==''||$pass==''){
               echo "Please input values";
-          }else if(mysqli_query($conn,$insert)){
-            echo "<div class='alert-box'>";
-            echo "<span class='alert insert'>Post published.</span>";
-            echo "</div>";
-            // echo "post-title: ".$postTitle ."<br><br>";
-            // echo "post-desc: ".$postDesc ."<br><br>";
-            header("Refresh:1; url=../admin/posts.php");
+          }else if($result = mysqli_query($conn,$sql)){
+              $row = mysqli_num_rows($result);
+
+              if($row == 1){
+                echo "Login successful";
+                $_SESSION['user'] = $username;
+                header("Refresh:.5; url=../index.php");
+              }else{
+                echo "<div class='alert-box'>";
+                echo "<span class='alert delete'>User not found. Please try again.</span>";
+                echo "</div>";
+                header("Refresh:1; url=../admin/login.php");
+              }
               }
           }
       ?>

@@ -24,7 +24,8 @@ a:link, a:visited{
 }
 
 .admin-menu-item:hover, .admin-menu-item:active{
-  background-color: #F0F7F4;
+  background-color: #8fc548;
+  color: white;
 }
 
 header{
@@ -41,12 +42,12 @@ header{
 }
 
 .new-post:link, .new-post:active{
-  border: 1px solid #a2e3c4;;
+  border: 1px solid #8fc548;
   border-radius: .25em;
 }
 
 .new-post:hover{
-  background-color: #a2e3c4;
+  background-color: #8fc548;
   color: #F0F7F4;
   border: none;
 }
@@ -105,7 +106,7 @@ header{
   width: 100%;
 }
 
-input[type=text], textarea {
+input[type=text], textarea, input[type=email] {
   padding: 1em 1.5em;
   margin: 1em 0;
   border: 1px solid #F0F7F4;
@@ -114,7 +115,7 @@ input[type=text], textarea {
 
 input[type=submit] {
   width: 100%;
-  background-color: #a2e3c4;
+  background-color: #8fc548;
   color: white;
   padding: 1em 1.5em;
   margin: 1em 0;
@@ -124,7 +125,7 @@ input[type=submit] {
 }
 
 .btn-publish:hover{
-  background-color: #5C967A;
+  background-color: #98D14D;
 }
 
 .alert-box{
@@ -154,5 +155,13 @@ input[type=submit] {
 }
 
 .total{
-  color: #155724;
+  color: #8FC548;
+}
+
+.add-donation{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 5em 20em;
 }

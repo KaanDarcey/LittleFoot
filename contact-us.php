@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Make a Donation | Little Foot</title>
+    <title>Contact Us | Little Foot</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
@@ -40,22 +40,17 @@
         </div>
       </div>
       <main class="add-donation">
-        <h1>Make a Donation</h1>
+        <h1>Contact Us</h1>
         <div class="form-cont">
-          <form class="post-form" method="POST" action="PHP/add-donation.php">
+          <form class="post-form" method="POST" action="PHP/send-msg.php">
             <label for="name">Name</label>
             <input type="text" name="name" class="name" placeholder="Name" required/>
-            <label for="card">Card Number</label>
-            <input type="text" name="card" class="card" placeholder="Card Number" required minlength="16" maxlength="19"/>
-            <label for="cvv">CVV</label>
-            <input type="text" name="cvv" class="cvv" placeholder="CVV" required minlength="3" maxlength="3"/>
-            <label for="date">Expiry Date</label>
-            <input type="text" name="date" class="date" placeholder="mmyy" required minlength="4" maxlength="4"/>
-            <label for="amount">Donation Amount</label>
-            <input type="text" name="amount" class="amount" placeholder="0.00" required/>
+            <label for="email">Email</label>
+            <input type="email" name="email" class="email" placeholder="Email Address"/>
+            <label for="msg">Message</label>
+            <textarea rows="10" cols="50" name="msg" class="msg" placeholder="Post description..." required></textarea>
 
-
-            <input type="submit" name="submit" value="Donate" class="btn-publish">
+            <input type="submit" name="send-msg" value="Send" class="btn-publish">
           </form>
         </div>
       </main>

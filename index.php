@@ -1,14 +1,15 @@
+<?php session_start(); ?>
+
 <?php
 include './PHP/database.php';
-
 ?>
-
 <!DOCTYPE html>
 <html>
     <head>
         <title>Little Foot</title>
         <meta charset="utf-8" />
         <link href='./CSS/style.css' rel='stylesheet'/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
     </head>
     <body>
         <div class="home-container">
@@ -18,10 +19,20 @@ include './PHP/database.php';
                     <h3>Little Foot</h3>
                 </div>
                 <div>
-                    <a href='new-post.php'>Create New Post</a>
-                    <a href='login.html'>
-                        <button class="home-header-btn">Sign In</button>
-                    </a>
+                    <?php
+                    if(!isset($_SESSION['user'])){
+                      echo "<a href='index.php'>Home</a>";
+                      echo "<a href='contact-us.php'>Contact Us</a>";
+
+                      echo "<a href='admin/login.php' class='admin-login'>Sign In</a>";
+                      // echo "<a href='admin/login.php' class='admin-login'><button class='home-header-btn'>Sign In</button></a>";
+                      echo "<span class='donate'><a href='donate.php'>DONATE</a></span>";
+                    }else{
+                        echo "<a href='admin/posts.php'>All Posts</a>";                        
+                        echo "<a href='admin/new-post.php'>Create New Post</a>";                        
+                        echo "<a href='PHP/logout.php'>Log Out</a>";
+                    }
+                    ?>
                 </div>
             </div>
             <div class="home-hero">
@@ -58,15 +69,43 @@ include './PHP/database.php';
                 <h3>Articles</h3>
                 <?php
 
-                $sql = "SELECT * FROM post";
+                $sql = "SELECT * FROM post WHERE post_deleted = 0";
                 $return = mysqli_query($conn, $sql);
 
                 while ($row = mysqli_fetch_assoc($return)) {
                     echo "<div class='home-post'><h4>{$row['post_title']}</h4><div class='post-descr'><p>{$row['post_desc']}</p></div></div>";
                 }
-                ?>
-                
+                ?> 
             </div>
+            <div class="stat-container">
+              <div class="stat">
+                <i class="fas fa-hands-helping"></i>
+                <h1>108</h1>
+                <span>Volunteers</span>
+              </div>
+              <div class="stat">
+              <?php
+                require_once('./PHP/database.php');
+                $sql_sum = "SELECT * FROM donation";
+                $sum = mysqli_query($conn, $sql_sum);
+                $total = 0;
+                while($row = mysqli_fetch_assoc($sum)){
+                    $total += $row['donation_amount'];
+                }
+                echo "<i class='fas fa-hand-holding-usd usd'></i>";
+                echo "<h1>$ $total</h1>";
+                echo "<span>Donations</span>";
+                mysqli_close($conn);
+            ?>
+              </div>
+              <div class="stat">  
+                <i class="fas fa-clock"></i>
+                <h1>3000</h1>
+                <span>Hours of Help</span>
+              </div>
+
+            </div>
+
             <div class="footer">
                 <p> &copy; Copyright Little Foot</p>
             </div>
